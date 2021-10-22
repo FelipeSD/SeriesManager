@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SeriesManager</string>
+    <string name="editar">Editar</string>
+    <string name="remover">Remover</string>
+</resources>
