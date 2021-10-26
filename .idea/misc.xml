@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/drawable/ic_launcher_adicionar_foreground.xml" value="0.1828125" />
+        <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/activity_cadastro_serie.xml" value="0.25" />
+        <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/activity_register_serie.xml" value="0.1" />
+        <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/serie_list_item.xml" value="0.22" />
         <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/menu/context_menu_main.xml" value="0.1" />
       </map>
     </option>

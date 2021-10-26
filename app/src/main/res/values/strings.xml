@@ -2,4 +2,12 @@
     <string name="app_name">SeriesManager</string>
     <string name="editar">Editar</string>
     <string name="remover">Remover</string>
+    <string name="adicionar_serie">Adicionar série</string>
+    <string name="list_item_serie">Série</string>
+    <string name="list_item_genero">Gênero</string>
+    <string name="list_item_release">Ano lançamento</string>
+    <string name="text_view_serie">Série</string>
+    <string name="text_view_release">Ano de lançamento</string>
+    <string name="text_view_producer">Emissora</string>
+    <string name="save_button">Salvar</string>
 </resources>

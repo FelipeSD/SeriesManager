@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/serieEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/text_view_serie"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/releaseEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/text_view_release"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:minHeight="48dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/genre"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/producerEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/text_view_producer"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:importantForAutofill="no" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save_button" />
+
+</LinearLayout>
