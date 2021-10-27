@@ -11,9 +11,8 @@
     android:padding="10dp">
 
     <TextView
-        android:id="@+id/serieTv"
+        android:id="@+id/mainTitleTv"
         android:fontFamily="monospace"
-        android:text="@string/list_item_serie"
         android:textSize="22sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -23,21 +22,19 @@
         tools:layout_editor_absoluteY="10dp" />
 
     <TextView
-        android:text="@string/list_item_genero"
-        android:id="@+id/genreTv"
+        android:id="@+id/secondaryTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@id/releaseYearTv"
+        app:layout_constraintEnd_toStartOf="@id/tertiaryTv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/serieTv" />
+        app:layout_constraintTop_toBottomOf="@id/mainTitleTv" />
 
     <TextView
-        android:id="@+id/releaseYearTv"
-        android:text="@string/list_item_release"
+        android:id="@+id/tertiaryTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/genreTv"
-        app:layout_constraintTop_toBottomOf="@id/serieTv" />
+        app:layout_constraintStart_toEndOf="@id/secondaryTv"
+        app:layout_constraintTop_toBottomOf="@id/mainTitleTv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

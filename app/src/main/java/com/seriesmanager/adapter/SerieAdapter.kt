@@ -15,9 +15,9 @@ class SerieAdapter(
 
     inner class SerieLayoutHolder(layoutSerieBinding: SerieListItemBinding)
         : RecyclerView.ViewHolder(layoutSerieBinding.root), View.OnCreateContextMenuListener {
-        val serieTv: TextView = layoutSerieBinding.serieTv
-        val genreTv: TextView = layoutSerieBinding.genreTv
-        val releaseYearTv: TextView = layoutSerieBinding.releaseYearTv
+        val mainTitleTv: TextView = layoutSerieBinding.mainTitleTv
+        val secondaryTv: TextView = layoutSerieBinding.secondaryTv
+        val tertiaryTv: TextView = layoutSerieBinding.tertiaryTv
 
         init {
             itemView.setOnCreateContextMenuListener(this)
@@ -33,22 +33,21 @@ class SerieAdapter(
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SerieLayoutHolder {
-        return SerieLayoutHolder(SerieListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SerieLayoutHolder =
+        SerieLayoutHolder(SerieListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
 
     override fun onBindViewHolder(holder: SerieLayoutHolder, positionItem: Int) {
         val serie = seriesList[positionItem]
 
         with(holder){
-            serieTv.text = serie.name
-            genreTv.text = serie.genre
-            releaseYearTv.text = serie.releaseYear.toString()
+            mainTitleTv.text = serie.name
+            secondaryTv.text = serie.genre
+            tertiaryTv.text = serie.releaseYear.toString()
         }
 
         holder.itemView.setOnClickListener {
-            onItemClickListener.onItemClick(position)
+            onItemClickListener.onItemClick(positionItem)
         }
 
         holder.itemView.setOnLongClickListener{

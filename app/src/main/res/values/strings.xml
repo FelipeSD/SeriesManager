@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">SeriesManager</string>
-    <string name="editar">Editar</string>
-    <string name="remover">Remover</string>
-    <string name="adicionar_serie">Adicionar série</string>
+    <string name="edit">Editar</string>
+    <string name="remove">Remover</string>
+    <string name="add_serie">Adicionar série</string>
     <string name="list_item_serie">Série</string>
     <string name="list_item_genero">Gênero</string>
     <string name="list_item_release">Ano lançamento</string>
