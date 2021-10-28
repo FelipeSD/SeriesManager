@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.seriesmanager.adapter.OnItemClickListener
 import com.seriesmanager.adapter.SerieAdapter
+import com.seriesmanager.controller.SerieController
 import com.seriesmanager.databinding.ActivityMainBinding
 import com.seriesmanager.model.Serie
 
@@ -24,14 +25,15 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    // Data source
-    private val seriesList: MutableList<Serie> = mutableListOf()
-/*
-    by lazy {
-        chamar controller
-        mutableListOf(Serie("teste1", 2020, "Netflix", "drama"))
+    // Controller
+    private val serieController: SerieController by lazy {
+        SerieController(this)
     }
-*/
+
+    // Data source
+    private val seriesList: MutableList<Serie> by lazy {
+        serieController.getSeries()
+    }
 
     // Adapter
     private val serieAdapter: SerieAdapter by lazy {
@@ -62,9 +64,11 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
                     if(position != null && position != -1){
                         // editing
                         seriesList[position] = serie
+                        serieController.updateSerie(serie)
                     }else{
                         // adding
                         seriesList.add(serie)
+                        serieController.createSerie(serie)
                     }
                     serieAdapter.notifyDataSetChanged()
                 }
@@ -102,6 +106,7 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
                     setPositiveButton("Sim"){
                         _, _ ->
                         seriesList.removeAt(position)
+                        serieController.deleteSerie(serie.name)
                         serieAdapter.notifyDataSetChanged()
                         Snackbar.make(serieActivityBinding.root, "${serie.name} was removed", Snackbar.LENGTH_SHORT).show()
                     }
