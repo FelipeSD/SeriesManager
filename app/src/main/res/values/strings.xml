@@ -11,4 +11,8 @@
     <string name="add_season">Adicionar temporada</string>
     <string name="numero_sequencial">Número sequencial</string>
     <string name="quantidade_episodios">Quantidade episódios</string>
+    <string name="adicionar_episodio">Adicionar episódio</string>
+    <string name="nome_episodio">Nome do episódio</string>
+    <string name="duration">Duração</string>
+    <string name="assistido">Assistido</string>
 </resources>

@@ -5,8 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Episode(
-    val sequence: Int = 0,
+    val sequence: String = "",
     val name: String = "",
-    val duration: Number = 0,
+    val duration: String = "",
     val watched: Boolean = false
 ): Parcelable

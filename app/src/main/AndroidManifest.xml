@@ -10,9 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SeriesManager">
         <activity
-            android:name=".RegisterSeason"
-            android:label="Temporada"
+            android:name=".RegisterEpisode"
+            android:label="Episódio"
             android:exported="false" />
+        <activity
+            android:name=".EpisodeActivity"
+            android:label="Episódios"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterSeason"
+            android:exported="false"
+            android:label="Temporada" />
         <activity
             android:name=".SeasonActivity"
             android:exported="false"

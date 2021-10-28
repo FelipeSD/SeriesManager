@@ -56,7 +56,6 @@ class RegisterSeason : AppCompatActivity() {
             registerSeasonActivity.releaseEt.text.toString(),
             registerSeasonActivity.episodesEt.text.toString(),
         )
-        println("season = ${season}")
         val resultIntent = Intent()
         resultIntent.putExtra(SeasonActivity.EXTRA_SEASON, season)
 

@@ -115,8 +115,8 @@ class SeasonActivity : AppCompatActivity(), OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         val season = seasonList[position]
-//        val seasonActivityIntent = Intent(this, SeasonActivity::class.java)
-//        seasonActivityIntent.putExtra(EXTRA_SEASON, season)
-//        startActivity(seasonActivityIntent)
+        val episodeActivityIntent = Intent(this, EpisodeActivity::class.java)
+        episodeActivityIntent.putExtra(EXTRA_SEASON, season)
+        startActivity(episodeActivityIntent)
     }
 }
