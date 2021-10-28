@@ -4,8 +4,8 @@ import android.view.*
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.seriesmanager.R
+import com.seriesmanager.databinding.LayoutListItemBinding
 import com.seriesmanager.model.Serie
-import com.seriesmanager.databinding.SerieListItemBinding
 
 class SerieAdapter(
     private val onItemClickListener: OnItemClickListener,
@@ -13,7 +13,7 @@ class SerieAdapter(
 ) : RecyclerView.Adapter<SerieAdapter.SerieLayoutHolder>() {
     var position: Int = -1
 
-    inner class SerieLayoutHolder(layoutSerieBinding: SerieListItemBinding)
+    inner class SerieLayoutHolder(layoutSerieBinding: LayoutListItemBinding)
         : RecyclerView.ViewHolder(layoutSerieBinding.root), View.OnCreateContextMenuListener {
         val mainTitleTv: TextView = layoutSerieBinding.mainTitleTv
         val secondaryTv: TextView = layoutSerieBinding.secondaryTv
@@ -34,7 +34,7 @@ class SerieAdapter(
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SerieLayoutHolder =
-        SerieLayoutHolder(SerieListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        SerieLayoutHolder(LayoutListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
 
     override fun onBindViewHolder(holder: SerieLayoutHolder, positionItem: Int) {

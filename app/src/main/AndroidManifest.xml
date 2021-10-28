@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SeriesManager">
         <activity
+            android:name=".RegisterSeason"
+            android:label="Temporada"
+            android:exported="false" />
+        <activity
+            android:name=".SeasonActivity"
+            android:exported="false"
+            android:label="Temporadas" />
+        <activity
+            android:name=".RegisterSerie"
+            android:exported="true"
+            android:label="Série" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -18,10 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".RegisterSerie"
-            android:exported="true"
-            android:label="Série" />
     </application>
 
 </manifest>

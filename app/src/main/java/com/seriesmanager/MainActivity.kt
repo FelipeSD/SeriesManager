@@ -74,9 +74,6 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         serieActivityBinding.btnAddSerie.setOnClickListener{
             serieResultLauncher.launch(Intent(this, RegisterSerie::class.java))
         }
-
-//        seriesList.add(Serie("teste", "2020", "Netflix", "Drama"))
-//        serieAdapter.notifyDataSetChanged()
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
@@ -84,6 +81,12 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         val serie = seriesList[position]
 
         return when(item.itemId){
+            R.id.viewItemMenu -> {
+                val viewSerieIntent = Intent(this, RegisterSerie::class.java)
+                viewSerieIntent.putExtra(EXTRA_SERIE, serie)
+                startActivity(viewSerieIntent)
+                true
+            }
             R.id.editItemMenu -> {
                 // Edit serie
                 val editSerieIntent = Intent(this, RegisterSerie::class.java)
@@ -119,8 +122,8 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         val serie = seriesList[position]
-        val viewSerieIntent = Intent(this, RegisterSerie::class.java)
-        viewSerieIntent.putExtra(EXTRA_SERIE, serie)
-        startActivity(viewSerieIntent)
+        val seasonActivityIntent = Intent(this, SeasonActivity::class.java)
+        seasonActivityIntent.putExtra(EXTRA_SERIE, serie)
+        startActivity(seasonActivityIntent)
     }
 }
