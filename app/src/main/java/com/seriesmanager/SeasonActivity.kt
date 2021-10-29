@@ -79,8 +79,6 @@ class SeasonActivity : AppCompatActivity(), OnItemClickListener {
                 }
             }
         }
-
-        seasonAdapter.notifyDataSetChanged()
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {

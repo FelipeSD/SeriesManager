@@ -1,6 +1,7 @@
 package com.seriesmanager
 
 import android.content.Intent
+import android.database.SQLException
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -10,8 +11,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.seriesmanager.adapter.EpisodeAdapter
+import com.seriesmanager.controller.EpisodeController
 import com.seriesmanager.databinding.ActivityEpisodeBinding
 import com.seriesmanager.model.Episode
+import com.seriesmanager.model.Season
 
 class EpisodeActivity : AppCompatActivity() {
     companion object Extras {
@@ -19,11 +22,20 @@ class EpisodeActivity : AppCompatActivity() {
         const val EXTRA_POSITION = "EXTRA_POSITION"
     }
 
+    private lateinit var selectedSeason: Season
+
+
+    private val episodeController: EpisodeController by lazy {
+        EpisodeController(this)
+    }
+
     private val episodeActivityBinding: ActivityEpisodeBinding by lazy {
         ActivityEpisodeBinding.inflate(layoutInflater)
     }
 
-    private val episodeList: MutableList<Episode> = mutableListOf()
+    private val episodeList: MutableList<Episode> by lazy{
+        episodeController.getEpisodes(selectedSeason.sequence)
+    }
 
     private val episodeAdapter: EpisodeAdapter by lazy {
         EpisodeAdapter(episodeList)
@@ -38,6 +50,8 @@ class EpisodeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(episodeActivityBinding.root)
+
+        selectedSeason = intent.getParcelableExtra(SeasonActivity.EXTRA_SEASON)!!
 
         episodeActivityBinding.btnAddEpisode.setOnClickListener{
             episodeResultLauncher.launch(Intent(this, RegisterEpisode::class.java))
@@ -55,8 +69,10 @@ class EpisodeActivity : AppCompatActivity() {
                     if(position != null && position != -1){
                         // editing
                         episodeList[position] = episode
+                        episodeController.updateEpisode(episode, selectedSeason.sequence)
                     }else{
                         // adding
+                        episodeController.createEpisode(episode, selectedSeason.sequence)
                         episodeList.add(episode)
                     }
                     episodeAdapter.notifyDataSetChanged()
@@ -95,7 +111,8 @@ class EpisodeActivity : AppCompatActivity() {
                     setPositiveButton("Sim"){
                         _, _ ->
                         episodeList.removeAt(position)
-                        Snackbar.make(episodeActivityBinding.root, "Season ${episode.sequence} was removed", Snackbar.LENGTH_SHORT).show()
+                        episodeController.deleteEpisode(episode.sequence)
+                        Snackbar.make(episodeActivityBinding.root, "Episode ${episode.sequence} was removed", Snackbar.LENGTH_SHORT).show()
                         episodeAdapter.notifyDataSetChanged()
                     }
                     setNegativeButton("Não"){

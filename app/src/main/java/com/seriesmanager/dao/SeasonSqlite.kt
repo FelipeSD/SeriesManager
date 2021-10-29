@@ -11,9 +11,9 @@ import com.seriesmanager.model.Season
 
 class SeasonSqlite(context: Context): SeasonDAO {
     companion object {
-        private val TABLE_SEASON = "season"
+        val TABLE_SEASON = "season"
 
-        private val COLUMN_SEQUENCE = "sequence"
+        val COLUMN_SEQUENCE = "sequence"
         private val COLUMN_RELEASE = "release_year"
         private val COLUMN_EPISODES = "number_episodes"
         private val COLUMN_FOREIGN_SERIE = "serie"
