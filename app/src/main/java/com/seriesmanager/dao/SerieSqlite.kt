@@ -11,11 +11,11 @@ import com.seriesmanager.model.Serie
 
 class SerieSqlite(context: Context): SerieDAO {
     companion object {
-        private val BD_SERIES_MANAGER = "series_manager"
+        val BD_SERIES_MANAGER = "series_manager"
 
-        private val TABLE_SERIE = "serie"
+        val TABLE_SERIE = "serie"
 
-        private val COLUMN_NAME = "name"
+        val COLUMN_NAME = "name"
         private val COLUMN_RELEASE = "release_year"
         private val COLUMN_PRODUCER = "producer"
         private val COLUMN_GENRE = "genre"

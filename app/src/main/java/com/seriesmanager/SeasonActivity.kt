@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.seriesmanager.adapter.OnItemClickListener
 import com.seriesmanager.adapter.SeasonAdapter
+import com.seriesmanager.controller.SeasonController
 import com.seriesmanager.databinding.ActivitySeasonBinding
 import com.seriesmanager.model.Season
+import com.seriesmanager.model.Serie
 
 class SeasonActivity : AppCompatActivity(), OnItemClickListener {
     companion object Extras {
@@ -20,11 +22,19 @@ class SeasonActivity : AppCompatActivity(), OnItemClickListener {
         const val EXTRA_POSITION = "EXTRA_POSITION"
     }
 
+    private lateinit var selectedSerie: Serie
+
     private val seasonActivityBinding: ActivitySeasonBinding by lazy {
         ActivitySeasonBinding.inflate(layoutInflater)
     }
 
-    private val seasonList: MutableList<Season> = mutableListOf()
+    private val seasonController: SeasonController by lazy {
+        SeasonController(this)
+    }
+
+    private val seasonList: MutableList<Season> by lazy {
+        seasonController.getSeasons(selectedSerie.name)
+    }
 
     private val seasonAdapter: SeasonAdapter by lazy {
         SeasonAdapter(this, seasonList)
@@ -39,6 +49,8 @@ class SeasonActivity : AppCompatActivity(), OnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(seasonActivityBinding.root)
+
+        selectedSerie = intent.getParcelableExtra(MainActivity.EXTRA_SERIE)!!
 
         seasonActivityBinding.btnAddSeason.setOnClickListener{
             Snackbar.make(seasonActivityBinding.root, "Add temporada", Snackbar.LENGTH_SHORT).show()
@@ -57,9 +69,11 @@ class SeasonActivity : AppCompatActivity(), OnItemClickListener {
                     if(position != null && position != -1){
                         // editing
                         seasonList[position] = season
+                        seasonController.updateSeason(season, selectedSerie.name)
                     }else{
                         // adding
                         seasonList.add(season)
+                        seasonController.createSeason(season, selectedSerie.name)
                     }
                     seasonAdapter.notifyDataSetChanged()
                 }
@@ -95,6 +109,7 @@ class SeasonActivity : AppCompatActivity(), OnItemClickListener {
                     setPositiveButton("Sim"){
                         _, _ ->
                         seasonList.removeAt(position)
+                        seasonController.deleteSeason(season.sequence)
                         Snackbar.make(seasonActivityBinding.root, "Season ${season.sequence} was removed", Snackbar.LENGTH_SHORT).show()
                         seasonAdapter.notifyDataSetChanged()
                     }
