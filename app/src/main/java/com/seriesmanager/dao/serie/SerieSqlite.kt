@@ -1,4 +1,4 @@
-package com.seriesmanager.dao
+package com.seriesmanager.dao.serie
 
 import android.content.ContentValues
 import android.content.Context
@@ -95,11 +95,11 @@ class SerieSqlite(context: Context): SerieDAO {
 
     override fun updateSerie(serie: Serie): Int {
         val serieCv = serieToContentValues(serie)
-        return seriesBd.update(TABLE_SERIE, serieCv, "${COLUMN_NAME} = ?", arrayOf(serie.name))
+        return seriesBd.update(TABLE_SERIE, serieCv, "$COLUMN_NAME = ?", arrayOf(serie.name))
     }
 
     override fun deleteSerie(name: String): Int {
-        return seriesBd.delete(TABLE_SERIE, "${COLUMN_NAME} = ?", arrayOf(name))
+        return seriesBd.delete(TABLE_SERIE, "$COLUMN_NAME = ?", arrayOf(name))
     }
 
     private fun contentValuesToSerie(serieCursor: Cursor): Serie {

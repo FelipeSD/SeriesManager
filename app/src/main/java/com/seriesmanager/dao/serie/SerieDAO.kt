@@ -1,4 +1,4 @@
-package com.seriesmanager.dao
+package com.seriesmanager.dao.serie
 
 import com.seriesmanager.model.Serie
 
