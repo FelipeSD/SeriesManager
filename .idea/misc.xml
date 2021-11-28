@@ -4,9 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/drawable/ic_launcher_adicionar_foreground.xml" value="0.1828125" />
+        <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/activity_autenticacao.xml" value="0.22" />
+        <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/activity_cadastrar_usuario.xml" value="0.15260416666666668" />
         <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/activity_cadastro_serie.xml" value="0.25" />
         <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/activity_episode.xml" value="0.1" />
         <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/activity_recuperar_senha.xml" value="0.15260416666666668" />
         <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/activity_register_episode.xml" value="0.4466666666666667" />
         <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/activity_register_season.xml" value="0.16666666666666666" />
         <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/activity_register_serie.xml" value="0.1" />
@@ -14,6 +17,7 @@
         <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/layout_list_item.xml" value="0.22" />
         <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/layout/serie_list_item.xml" value="0.22" />
         <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/menu/context_menu_main.xml" value="0.1" />
+        <entry key="..\:/Cursos/IFSP/Android/Projetos/SeriesManager/app/src/main/res/menu/menu_main.xml" value="0.16666666666666666" />
       </map>
     </option>
   </component>

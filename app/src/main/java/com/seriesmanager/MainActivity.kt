@@ -1,7 +1,6 @@
 package com.seriesmanager
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.result.ActivityResultLauncher
@@ -15,7 +14,7 @@ import com.seriesmanager.controller.SerieController
 import com.seriesmanager.databinding.ActivityMainBinding
 import com.seriesmanager.model.Serie
 
-class MainActivity : AppCompatActivity(), OnItemClickListener {
+class MainActivity : AppControl(), OnItemClickListener {
     companion object Extras {
         const val EXTRA_SERIE = "EXTRA_SERIE"
         const val EXTRA_POSITION = "EXTRA_POSITION"
@@ -130,5 +129,9 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         val seasonActivityIntent = Intent(this, SeasonActivity::class.java)
         seasonActivityIntent.putExtra(EXTRA_SERIE, serie)
         startActivity(seasonActivityIntent)
+    }
+
+    override fun refreshList() {
+        serieAdapter.notifyDataSetChanged()
     }
 }

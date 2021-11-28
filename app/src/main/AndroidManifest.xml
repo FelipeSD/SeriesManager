@@ -10,13 +10,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SeriesManager">
         <activity
-            android:name=".RegisterEpisode"
-            android:label="Episódio"
+            android:name=".RegisterUserActivity"
             android:exported="false" />
         <activity
-            android:name=".EpisodeActivity"
-            android:label="Episódios"
+            android:name=".RecoverPasswordActivity"
             android:exported="false" />
+        <activity
+            android:name=".AuthActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RegisterEpisode"
+            android:exported="false"
+            android:label="Episódio" />
+        <activity
+            android:name=".EpisodeActivity"
+            android:exported="false"
+            android:label="Episódios" />
         <activity
             android:name=".RegisterSeason"
             android:exported="false"
@@ -31,13 +46,7 @@
             android:label="Série" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
