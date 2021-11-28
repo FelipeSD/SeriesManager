@@ -1,4 +1,4 @@
-package com.seriesmanager.dao
+package com.seriesmanager.dao.episode
 
 import android.content.ContentValues
 import android.content.Context
@@ -7,6 +7,7 @@ import android.database.Cursor
 import android.database.SQLException
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
+import com.seriesmanager.dao.season.SeasonSqlite
 import com.seriesmanager.dao.serie.SerieSqlite
 import com.seriesmanager.model.Episode
 
@@ -40,7 +41,7 @@ class EpisodeSqlite(context: Context): EpisodeDAO {
         }
     }
 
-    override fun createEpisode(episode: Episode, seasonSequence: String): Long {
+    override fun createEpisode(episode: Episode, seasonSequence: String, serieName: String): Long {
         val episodeCv = episodeToContentValues(episode, seasonSequence)
         return episodeBd.insert(TABLE_EPISODE, null, episodeCv)
     }
@@ -49,7 +50,7 @@ class EpisodeSqlite(context: Context): EpisodeDAO {
         TODO("Not yet implemented")
     }
 
-    override fun getEpisodes(seasonSequence: String): MutableList<Episode> {
+    override fun getEpisodes(seasonSequence: String, serieName: String): MutableList<Episode> {
         val episodeCursor = episodeBd.query(
             TABLE_EPISODE,
             null,
@@ -74,13 +75,17 @@ class EpisodeSqlite(context: Context): EpisodeDAO {
         return episodeList
     }
 
-    override fun updateEpisode(episode: Episode, seasonSequence: String): Int {
+    override fun updateEpisode(episode: Episode, seasonSequence: String, serieName: String): Int {
         val episodeCv = episodeToContentValues(episode, seasonSequence)
-        return episodeBd.update(TABLE_EPISODE, episodeCv, "${COLUMN_SEQUENCE} = ?", arrayOf(episode.sequence))
+        return episodeBd.update(TABLE_EPISODE, episodeCv, "$COLUMN_SEQUENCE = ?", arrayOf(episode.sequence))
     }
 
-    override fun deleteEpisode(episodeSequence: String): Int {
-         return episodeBd.delete(TABLE_EPISODE, "${COLUMN_SEQUENCE} = ?", arrayOf(episodeSequence))
+    override fun deleteEpisode(
+        episodeSequence: String,
+        seasonSequence: String,
+        serieName: String
+    ): Int {
+         return episodeBd.delete(TABLE_EPISODE, "$COLUMN_SEQUENCE = ?", arrayOf(episodeSequence))
     }
 
     private fun contentValuesToEpisode(episodeCursor: Cursor): Episode {

@@ -1,4 +1,4 @@
-package com.seriesmanager.dao
+package com.seriesmanager.dao.season
 
 import android.content.ContentValues
 import android.content.Context
@@ -74,11 +74,11 @@ class SeasonSqlite(context: Context): SeasonDAO {
 
     override fun updateSeason(season: Season, serieName: String): Int {
         val seasonCv = seasonToContentValues(season, serieName)
-        return seasonBd.update(TABLE_SEASON, seasonCv, "${COLUMN_SEQUENCE} = ?", arrayOf(season.sequence))
+        return seasonBd.update(TABLE_SEASON, seasonCv, "$COLUMN_SEQUENCE = ?", arrayOf(season.sequence))
     }
 
-    override fun deleteSeason(sequence: String): Int {
-        return seasonBd.delete(TABLE_SEASON, "${COLUMN_SEQUENCE} = ?", arrayOf(sequence))
+    override fun deleteSeason(sequence: String, serieName: String): Int {
+        return seasonBd.delete(TABLE_SEASON, "$COLUMN_SEQUENCE = ?", arrayOf(sequence))
     }
 
      private fun contentValuesToSeason(seasonCursor: Cursor): Season {

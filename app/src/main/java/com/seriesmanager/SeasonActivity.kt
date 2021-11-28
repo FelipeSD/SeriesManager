@@ -18,6 +18,7 @@ import com.seriesmanager.model.Serie
 
 class SeasonActivity : AppCompatActivity(), OnItemClickListener {
     companion object Extras {
+        const val EXTRA_SERIE = "EXTRA_SERIE"
         const val EXTRA_SEASON = "EXTRA_SEASON"
         const val EXTRA_POSITION = "EXTRA_POSITION"
     }
@@ -107,7 +108,7 @@ class SeasonActivity : AppCompatActivity(), OnItemClickListener {
                     setPositiveButton("Sim"){
                         _, _ ->
                         seasonList.removeAt(position)
-                        seasonController.deleteSeason(season.sequence)
+                        seasonController.deleteSeason(season.sequence, selectedSerie.name)
                         Snackbar.make(seasonActivityBinding.root, "Season ${season.sequence} was removed", Snackbar.LENGTH_SHORT).show()
                         seasonAdapter.notifyDataSetChanged()
                     }
@@ -130,6 +131,7 @@ class SeasonActivity : AppCompatActivity(), OnItemClickListener {
         val season = seasonList[position]
         val episodeActivityIntent = Intent(this, EpisodeActivity::class.java)
         episodeActivityIntent.putExtra(EXTRA_SEASON, season)
+        episodeActivityIntent.putExtra(EXTRA_SERIE, selectedSerie)
         startActivity(episodeActivityIntent)
     }
 }

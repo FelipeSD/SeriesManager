@@ -11,7 +11,7 @@ import com.seriesmanager.model.Serie
 
 class SerieFirebase: SerieDAO {
     companion object {
-        private val BD_SERIES = "series"
+        val BD_SERIES = "series"
     }
 
     private val seriesRtDb = Firebase.database.getReference(BD_SERIES)

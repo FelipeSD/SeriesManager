@@ -1,4 +1,4 @@
-package com.seriesmanager.dao
+package com.seriesmanager.dao.season
 
 import com.seriesmanager.model.Season
 
@@ -7,5 +7,5 @@ interface SeasonDAO {
     fun findSeason(name: String): Season
     fun getSeasons(serieName: String): MutableList<Season>
     fun updateSeason(serie: Season, serieName: String): Int
-    fun deleteSeason(name: String): Int
+    fun deleteSeason(name: String, serieName: String): Int
 }
