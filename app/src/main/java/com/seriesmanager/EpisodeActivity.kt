@@ -16,7 +16,7 @@ import com.seriesmanager.model.Episode
 import com.seriesmanager.model.Season
 import com.seriesmanager.model.Serie
 
-class EpisodeActivity : AppCompatActivity() {
+class EpisodeActivity : AppControl() {
     companion object Extras {
         const val EXTRA_EPISODE = "EXTRA_EPISODE"
         const val EXTRA_POSITION = "EXTRA_POSITION"
@@ -46,6 +46,7 @@ class EpisodeActivity : AppCompatActivity() {
     }
 
     private lateinit var episodeResultLauncher: ActivityResultLauncher<Intent>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,5 +130,9 @@ class EpisodeActivity : AppCompatActivity() {
                 false
             }
         }
+    }
+
+     override fun refreshList() {
+        episodeAdapter.notifyDataSetChanged()
     }
 }

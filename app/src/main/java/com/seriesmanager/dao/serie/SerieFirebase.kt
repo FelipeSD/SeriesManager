@@ -7,6 +7,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.seriesmanager.Auth
 import com.seriesmanager.model.Serie
 
 class SerieFirebase: SerieDAO {
@@ -14,7 +15,7 @@ class SerieFirebase: SerieDAO {
         val BD_SERIES = "series"
     }
 
-    private val seriesRtDb = Firebase.database.getReference(BD_SERIES)
+    private val seriesRtDb = Firebase.database.getReference(Auth.firebaseAuth.currentUser?.uid!!).child(BD_SERIES)
 
     private val seriesList = mutableListOf<Serie>()
 

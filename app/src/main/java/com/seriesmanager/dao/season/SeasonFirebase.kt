@@ -3,6 +3,7 @@ package com.seriesmanager.dao.season
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.seriesmanager.Auth
 import com.seriesmanager.dao.serie.SerieFirebase.Companion.BD_SERIES
 import com.seriesmanager.model.Season
 
@@ -11,7 +12,7 @@ class SeasonFirebase: SeasonDAO {
         val BD_SEASON = "season"
     }
 
-    private val seasonRtDb = Firebase.database.getReference(BD_SERIES)
+    private val seasonRtDb = Firebase.database.getReference(Auth.firebaseAuth.currentUser?.uid!!).child(BD_SERIES)
 
     private val seasonList = mutableListOf<Season>()
 

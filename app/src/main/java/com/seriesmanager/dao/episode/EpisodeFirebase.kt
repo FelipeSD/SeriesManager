@@ -3,6 +3,7 @@ package com.seriesmanager.dao.episode
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.seriesmanager.Auth
 import com.seriesmanager.dao.season.SeasonFirebase.Companion.BD_SEASON
 import com.seriesmanager.dao.serie.SerieFirebase.Companion.BD_SERIES
 import com.seriesmanager.model.Episode
@@ -12,7 +13,7 @@ class EpisodeFirebase: EpisodeDAO {
         private val BD_EPISODES = "episodes"
     }
 
-    private val episodesRtDb = Firebase.database.getReference(BD_SERIES)
+    private val episodesRtDb = Firebase.database.getReference(Auth.firebaseAuth.currentUser?.uid!!).child(BD_SERIES)
 
     private val episodesList = mutableListOf<Episode>()
 

@@ -16,7 +16,7 @@ import com.seriesmanager.databinding.ActivitySeasonBinding
 import com.seriesmanager.model.Season
 import com.seriesmanager.model.Serie
 
-class SeasonActivity : AppCompatActivity(), OnItemClickListener {
+class SeasonActivity : AppControl(), OnItemClickListener {
     companion object Extras {
         const val EXTRA_SERIE = "EXTRA_SERIE"
         const val EXTRA_SEASON = "EXTRA_SEASON"
@@ -133,5 +133,9 @@ class SeasonActivity : AppCompatActivity(), OnItemClickListener {
         episodeActivityIntent.putExtra(EXTRA_SEASON, season)
         episodeActivityIntent.putExtra(EXTRA_SERIE, selectedSerie)
         startActivity(episodeActivityIntent)
+    }
+
+    override fun refreshList() {
+        seasonAdapter.notifyDataSetChanged()
     }
 }
